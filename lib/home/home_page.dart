@@ -1,13 +1,13 @@
 import 'package:flutter/widgets.dart';
 
-class Home_Page extends StatefulWidget {
-  const Home_Page({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<Home_Page> createState() => _MyWidgetState();
+  State<HomePage> createState() => _MyWidgetState();
 }
 
-class _MyWidgetState extends State<Home_Page> {
+class _MyWidgetState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
