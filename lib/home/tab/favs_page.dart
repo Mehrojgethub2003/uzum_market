@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 class  FavsPage extends StatefulWidget {
   const FavsPage({super.key});
@@ -10,6 +10,10 @@ class  FavsPage extends StatefulWidget {
 class _MyWidgetState extends State<FavsPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+     return const Scaffold(
+      body: Center(
+        child: Text('4'),
+      ),
+    );
   }
 }
