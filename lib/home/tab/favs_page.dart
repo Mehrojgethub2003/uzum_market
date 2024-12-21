@@ -14,6 +14,7 @@ class _MyWidgetState extends State<FavsPage> {
       body: Center(
         child: Text('4'),
       ),
+      
     );
   }
 }
