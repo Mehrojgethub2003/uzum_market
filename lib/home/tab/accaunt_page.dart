@@ -45,7 +45,7 @@ class _MyWidgetState extends State<AccauntPage> {
                   Center(
                     child: CircleAvatar(
                         radius: 40,
-                        backgroundImage: AssetImage(AppImage.imgs1)),
+                        backgroundImage: AssetImage(AppImage.logo)),
                   ),
                   SizedBox(
                     height: 20,
@@ -53,7 +53,7 @@ class _MyWidgetState extends State<AccauntPage> {
                   Text(
                     "Tizimga kiring va Uzum veb-saytidagi oqil\n xaridlarga kiring",
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 18),
                   ),
                 ],
               ),
@@ -66,7 +66,7 @@ class _MyWidgetState extends State<AccauntPage> {
                   children: [
                     CircleAvatar(
                         radius: 15,
-                        backgroundImage: AssetImage(AppImage.imgs1)),
+                        backgroundImage: AssetImage(AppImage.imgs5)),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Text(
@@ -122,7 +122,7 @@ class _MyWidgetState extends State<AccauntPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Row(
                   children: [
-                    Icon(Icons.notifications),
+                    Icon(Icons.map_outlined),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Text(
