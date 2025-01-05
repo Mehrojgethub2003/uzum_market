@@ -18,12 +18,9 @@ class _MyWidgetState extends State<HomePage> with TickerProviderStateMixin {
     super.initState();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
-    return
-     Scaffold(
+    return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -56,10 +53,8 @@ class _MyWidgetState extends State<HomePage> with TickerProviderStateMixin {
               ],
             ),
           ),
-       
         ),
       ),
-     
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -113,7 +108,6 @@ class _MyWidgetState extends State<HomePage> with TickerProviderStateMixin {
                 ],
               ),
             ),
-  
             const SizedBox(
               height: 5,
             ),
@@ -216,7 +210,7 @@ class _MyWidgetState extends State<HomePage> with TickerProviderStateMixin {
                 },
               ),
             ),
-             SizedBox(
+            SizedBox(
               height: 60,
               width: double.infinity,
               child: TabBar(
@@ -232,11 +226,11 @@ class _MyWidgetState extends State<HomePage> with TickerProviderStateMixin {
               ),
             ),
             SizedBox(
-              height: m_h(context)*1-220,
+              height: m_h(context) * 1 - 220,
               width: double.infinity,
-              child:  TabBarView(
+              child: TabBarView(
                 controller: tabController,
-                children:const [
+                children: const [
                   TabBuilderWidget(),
                   TabBuilderWidget(),
                 ],
@@ -245,9 +239,8 @@ class _MyWidgetState extends State<HomePage> with TickerProviderStateMixin {
           ],
         ),
       ),
-   
     );
-    
+
     //  bady:Column(
 
     //  ),
@@ -296,3 +289,44 @@ class TabBuilderWidget extends StatelessWidget {
     );
   }
 }
+
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      itemCount: 10,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisExtent: 200,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+      itemBuilder: (context, index) {
+        return Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            image: DecorationImage(
+                image: AssetImage([
+                  AppImage.imgs2,
+                  AppImage.imgs1,
+                  AppImage.imgs3,
+                  AppImage.imgs4,
+                  AppImage.imgs4,
+                  AppImage.imgs3,
+                  AppImage.imgs1,
+                  AppImage.imgs1,
+                  AppImage.imgs2,
+                  AppImage.imgs4
+                ][index]),
+                fit: BoxFit.cover),
+          ),
+          // color: Colors.red,
+        );
+      },
+    );
+  }
+

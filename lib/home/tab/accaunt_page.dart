@@ -75,11 +75,14 @@ class _MyWidgetState extends State<AccauntPage> {
                       ),
                     ),
                     Spacer(),
+                  
                     Text(
                       "O'zbekcha",
                       style: TextStyle(fontSize: 17),
                     ),
+                    
                     Icon(Icons.arrow_forward_ios_rounded)
+            
                   ],
                 ),
               ),
