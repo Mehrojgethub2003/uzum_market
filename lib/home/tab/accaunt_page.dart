@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/components/app_image.dart';
 import 'package:online_shop/components/medeaqurest/medea_qurest.dart';
+import 'package:online_shop/home/counterpage.dart/cetiypage.dart';
 
 class AccauntPage extends StatefulWidget {
   const AccauntPage({super.key});
@@ -76,13 +77,27 @@ class _MyWidgetState extends State<AccauntPage> {
                     ),
                     Spacer(),
                   
-                    Text(
-                      "O'zbekcha",
-                      style: TextStyle(fontSize: 17),
+                     GestureDetector(
+                      onTap: () {
+                        // Navigate to the counter page when tapped
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CounterPage(), // Navigate to the CounterPage
+                          ),
+                        );
+                      },
+                      child: Row(
+                        children: [
+                          Text(
+                            "O'zbekcha",
+                            style: TextStyle(fontSize: 17),
+                          ),
+                          Icon(Icons.arrow_forward_ios_rounded)
+                        ],
+                      ),
                     ),
-                    
-                    Icon(Icons.arrow_forward_ios_rounded)
-            
+
                   ],
                 ),
               ),
@@ -107,9 +122,25 @@ class _MyWidgetState extends State<AccauntPage> {
                       ),
                     ),
                     Spacer(),
-                    Text("Toshkent", style: TextStyle(fontSize: 18)),
-                    Icon(Icons.arrow_forward_ios_rounded),
+                  GestureDetector(
+                    onTap: () {
+                    Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Cetiypage(), // Navigate to the CounterPage
+                          ),
+                        );
+                    },
+                    child: Row(
+                      children: [
+                        Text("Toshkent", style: TextStyle(fontSize: 18)),
+                        Icon(Icons.arrow_forward_ios_rounded),
+                      ],
+                    ),
+                    
+                  ),
                   ],
+
                 ),
 
                 //Icon(Icons.arrow_forward_ios_rounded)
@@ -250,6 +281,161 @@ class _MyWidgetState extends State<AccauntPage> {
                   )
                 ],
               ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// import 'package:flutter/material.dart';
+// import 'package:online_shop/components/app_image.dart';
+// import 'package:online_shop/components/medeaqurest/medea_qurest.dart';
+
+// class AccauntPage extends StatefulWidget {
+//   const AccauntPage({super.key});
+
+//   @override
+//   State<AccauntPage> createState() => _MyWidgetState();
+// }
+
+// class _MyWidgetState extends State<AccauntPage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Container(
+//           height: m_h(context) * 0.26,
+//           width: double.infinity,
+//           child: const Center(
+//             child: Text(
+//               "Profil",
+//               style: TextStyle(
+//                 color: Colors.black,
+//                 fontSize: 18.0,
+//                 fontWeight: FontWeight.bold,
+//               ),
+//             ),
+//           ),
+//         ),
+//       ),
+//       body: SingleChildScrollView(
+//         child: Column(
+//           children: [
+//             SizedBox(
+//               height: 5,
+//             ),
+//             Container(
+//               height: m_h(context) * 0.22,
+//               width: double.infinity,
+//               color: Colors.grey.shade200,
+//               child: Column(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: [
+//                   Center(
+//                     child: CircleAvatar(
+//                         radius: 40,
+//                         backgroundImage: AssetImage(AppImage.logo)),
+//                   ),
+//                   SizedBox(
+//                     height: 20,
+//                   ),
+//                   Text(
+//                     "Tizimga kiring va Uzum veb-saytidagi oqil\n xaridlarga kiring",
+//                     textAlign: TextAlign.center,
+//                     style: TextStyle(fontSize: 18),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//             SizedBox(
+//               height: 50,
+//               child: Padding(
+//                 padding: const EdgeInsets.symmetric(horizontal: 30),
+//                 child: Row(
+//                   children: [
+//                     CircleAvatar(
+//                         radius: 15,
+//                         backgroundImage: AssetImage(AppImage.imgs5)),
+//                     Padding(
+//                       padding: const EdgeInsets.symmetric(horizontal: 15),
+//                       child: Text(
+//                         "Ilova tili",
+//                         style: TextStyle(fontSize: 19),
+//                       ),
+//                     ),
+//                     Spacer(),
+//                     GestureDetector(
+//                       onTap: () {
+//                         // Navigate to the counter page when tapped
+//                         Navigator.push(
+//                           context,
+//                           MaterialPageRoute(
+//                             builder: (context) => CounterPage(), // Navigate to the CounterPage
+//                           ),
+//                         );
+//                       },
+//                       child: Row(
+//                         children: [
+//                           Text(
+//                             "O'zbekcha",
+//                             style: TextStyle(fontSize: 17),
+//                           ),
+//                           Icon(Icons.arrow_forward_ios_rounded)
+//                         ],
+//                       ),
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//             Container(
+//               height: 20,
+//               width: double.infinity,
+//               color: Colors.grey.shade300,
+//             ),
+//             // The rest of your widgets...
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// // New page to display the counter
+class CounterPage extends StatefulWidget {
+  const CounterPage({super.key});
+
+  @override
+  _CounterPageState createState() => _CounterPageState();
+}
+
+class _CounterPageState extends State<CounterPage> {
+  int _counter = 0; // Initialize the counter to 0
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++; // Increment the counter when the button is pressed
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Counter Page")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Counter: $_counter', // Display the counter
+              style: TextStyle(fontSize: 30),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _incrementCounter, // Call _incrementCounter when pressed
+              child: Text("Increase Counter"),
             ),
           ],
         ),

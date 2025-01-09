@@ -214,7 +214,7 @@ class _MyWidgetState extends State<HomePage> with TickerProviderStateMixin {
               height: 60,
               width: double.infinity,
               child: TabBar(
-                controller: tabController,
+               controller: tabController,
                 tabs: const [
                   Tab(
                     text: 'Yangi yil savdosi',
