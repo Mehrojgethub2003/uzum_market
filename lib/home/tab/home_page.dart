@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/components/app_image.dart';
 import 'package:online_shop/components/medeaqurest/medea_qurest.dart';
+import 'package:online_shop/data/app_servesis/product_serves.dart';
+import 'package:online_shop/data/models/product_models.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -29,16 +31,22 @@ class _MyWidgetState extends State<HomePage> with TickerProviderStateMixin {
           width: m_w(context) * 0.9,
           height: m_w(context) * 0.1,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.grey.shade300),
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.grey.shade200),
           child: Center(
             child: Row(
               children: [
+                const SizedBox(
+                  width: 7,
+                ),
                 const Center(
                   child: Icon(
                     Icons.search,
                     color: Colors.grey,
                   ),
+                ),
+                const SizedBox(
+                  width: 7,
                 ),
                 Container(
                   width: 300,
@@ -60,8 +68,20 @@ class _MyWidgetState extends State<HomePage> with TickerProviderStateMixin {
           children: [
             const SizedBox(
               height: 5,
+            
             ),
-            SizedBox(
+           FutureBuilder(
+            future: getProductsByCategoryShop(), 
+            builder: (context,snapshot){
+              if(snapshot.hasError){
+                return const Text("Nimadir xato ketdi");
+              }
+              else if(!snapshot.hasData){
+                return  const SizedBox(
+                      height: 270,
+                      child: Center(child: CircularProgressIndicator()));
+              }
+              return SizedBox(
               height: m_h(context) * 0.26,
               child: PageView(
                 children: [
@@ -105,10 +125,15 @@ class _MyWidgetState extends State<HomePage> with TickerProviderStateMixin {
                           image: AssetImage(AppImage.imgs4)),
                     ),
                   ),
+                
                 ],
               ),
+            );
+            
+            }
             ),
-            const SizedBox(
+            
+            SizedBox(
               height: 5,
             ),
             SizedBox(
@@ -174,47 +199,92 @@ class _MyWidgetState extends State<HomePage> with TickerProviderStateMixin {
             const SizedBox(
               height: 12,
             ),
-            SizedBox(
-              height: m_h(context) * 0.26,
-              width: double.infinity,
-              child: ListView.separated(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                itemCount: 5,
-                scrollDirection: Axis.horizontal,
-                separatorBuilder: (context, index) {
-                  return const SizedBox(width: 8);
-                },
-                itemBuilder: (context, index) {
-                  return Expanded(
-                    // flex: 9,
-                    child: Container(
-                      height: m_h(context) * 0.5,
-                      width: m_w(context) * 0.35,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        image: DecorationImage(
-                            image: AssetImage([
-                              AppImage.imgs2,
-                              AppImage.imgs1,
-                              AppImage.imgs3,
-                              AppImage.imgs4,
-                              AppImage.imgs3
-                            ][index]),
-                            fit: BoxFit.cover),
-                      ),
-                    ),
-                  );
-                  // Expanded(
-                  //   flex: 7,
-                  //   child:  Text("Salom",),);
-                },
-              ),
+            FutureBuilder(
+              future: getProductsByCategoryShop(),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return const Text('Error ketdi');
+                } else if (!snapshot.hasData) {
+                  return const SizedBox(
+                      height: 270,
+                      child: Center(child: CircularProgressIndicator()));
+                }
+                return SizedBox(
+                  height: 270,
+                  width: double.infinity,
+                  child: ListView.separated(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    itemCount: snapshot.data?.products?.length ?? 0,
+                    scrollDirection: Axis.horizontal,
+                    separatorBuilder: (context, index) {
+                      return const SizedBox(width: 8);
+                    },
+                    itemBuilder: (context, index) {
+                      return Expanded(
+                        // flex: 9,
+                        child: SizedBox(
+                          height: 150,
+                          width: 150,
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 150,
+                                //  width: double.infinity,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  image: DecorationImage(
+                                      image: NetworkImage(snapshot
+                                              .data?.products?[index].image ??
+                                          ''),
+                                      fit: BoxFit.contain),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                snapshot.data?.products != null
+                                    ? '${snapshot.data?.products?[index].category?.toUpperCase()}'
+                                    : ' ',
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontSize: 14, color: Colors.black),
+                              ),
+                              Text(
+                                snapshot.data?.products != null
+                                    ? '${snapshot.data?.products?[index].title}'
+                                    : ' ',
+                                maxLines: 3,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontSize: 14, color: Colors.black),
+                              ),
+                              Text(
+                                snapshot.data?.products != null
+                                    ? '\$${snapshot.data?.products?[index].price}'
+                                    : ' ',
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontSize: 18, color: Colors.black),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                      // Expanded(
+                      //   flex: 7,
+                      //   child:  Text("Salom",),);
+                    },
+                  ),
+                );
+              },
             ),
             SizedBox(
               height: 60,
               width: double.infinity,
               child: TabBar(
-               controller: tabController,
+                controller: tabController,
                 tabs: const [
                   Tab(
                     text: 'Yangi yil savdosi',
@@ -225,20 +295,37 @@ class _MyWidgetState extends State<HomePage> with TickerProviderStateMixin {
                 ],
               ),
             ),
-            SizedBox(
-              height: m_h(context) * 1 - 220,
-              width: double.infinity,
-              child: TabBarView(
-                controller: tabController,
-                children: const [
-                  TabBuilderWidget(),
-                  TabBuilderWidget(),
-                ],
-              ),
-            ),
+            FutureBuilder(
+                future: getProductsByCategory(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return const Text('Error ketdi');
+                  } else if (!snapshot.hasData) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  return SizedBox(
+                    height: m_h(context) * 1 - 220,
+                    width: double.infinity,
+                    child: TabBarView(
+                      controller: tabController,
+                      children: [
+                        TabBuilderWidget(
+                          products: snapshot.data?.products ?? [],
+                        ),
+                        // TapbuBuilderWeget1(
+                        //   products: snapshot.data?.products ?? [],
+                        // ),
+                        TabBuilderWidget(
+                          products: snapshot.data?.products ?? [],
+                        ),
+                      ],
+                    ),
+                  );
+                }),
           ],
         ),
       ),
+    
     );
 
     //  bady:Column(
@@ -248,85 +335,92 @@ class _MyWidgetState extends State<HomePage> with TickerProviderStateMixin {
 }
 
 class TabBuilderWidget extends StatelessWidget {
-  const TabBuilderWidget({
-    super.key,
-  });
+  const TabBuilderWidget({super.key, required this.products});
+
+  final List<Product>? products;
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      itemCount: 10,
+      // itemCount: products?.length,
+
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          mainAxisExtent: 200,
+          mainAxisExtent: 300,
           mainAxisSpacing: 10,
           crossAxisSpacing: 10),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       itemBuilder: (context, index) {
-        return Container(
-          height: double.infinity,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            image: DecorationImage(
-                image: AssetImage([
-                  AppImage.imgs2,
-                  AppImage.imgs1,
-                  AppImage.imgs3,
-                  AppImage.imgs4,
-                  AppImage.imgs4,
-                  AppImage.imgs3,
-                  AppImage.imgs1,
-                  AppImage.imgs1,
-                  AppImage.imgs2,
-                  AppImage.imgs4
-                ][index]),
-                fit: BoxFit.cover),
-          ),
-          // color: Colors.red,
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              height: 150,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                image: DecorationImage(
+                  image: NetworkImage(products?[index].image ?? ''),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              // color: Colors.red,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              products != null
+                  ? '${products?[index].category?.toUpperCase()}'
+                  : ' ',
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 14, color: Colors.black),
+            ),
+            Text(
+              products != null ? '${products?[index].title}' : ' ',
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 14, color: Colors.black),
+            ),
+            Text(
+              products != null ? '\$${products?[index].price}' : ' ',
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 18, color: Colors.black),
+            ),
+          ],
         );
       },
     );
   }
 }
 
-
-
-
-  @override
-  Widget build(BuildContext context) {
-    return GridView.builder(
-      itemCount: 10,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisExtent: 200,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10),
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-      itemBuilder: (context, index) {
-        return Container(
-          height: double.infinity,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            image: DecorationImage(
-                image: AssetImage([
-                  AppImage.imgs2,
-                  AppImage.imgs1,
-                  AppImage.imgs3,
-                  AppImage.imgs4,
-                  AppImage.imgs4,
-                  AppImage.imgs3,
-                  AppImage.imgs1,
-                  AppImage.imgs1,
-                  AppImage.imgs2,
-                  AppImage.imgs4
-                ][index]),
-                fit: BoxFit.cover),
-          ),
-          // color: Colors.red,
-        );
-      },
-    );
-  }
-
+// class TapbuBuilderWegetTu extends StatelessWidget {
+//   const TapbuBuilderWegetTu({super.key, required this.products});
+//   final List<Product>? products;
+//   @override
+//   Widget build(BuildContext context) {
+//     return GridView.builder(
+//       //  itemCount: 10,
+//       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+//           crossAxisCount: 2,
+//           mainAxisExtent: 200,
+//           mainAxisSpacing: 10,
+//           crossAxisSpacing: 10),
+//       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+//       itemBuilder: (context, index) {
+//         return Container(
+//           height: double.infinity,
+//           width: double.infinity,
+//           decoration: BoxDecoration(
+//             borderRadius: BorderRadius.circular(12),
+//             image: DecorationImage(
+//               image: NetworkImage(products?[index].image ?? ''),
+//               fit: BoxFit.cover,
+//             ),
+//           ), // color: Colors.red,
+//         );
+//       },
+//     );
+//   }
+// }

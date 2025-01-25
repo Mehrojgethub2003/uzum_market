@@ -1,3 +1,5 @@
+import 'dart:io';
+
 class AppImage {
  const AppImage();
   static const String imgs1 = "assets/images/img_1.png" ;
@@ -6,4 +8,6 @@ class AppImage {
   static const String imgs4 = "assets/images/img_4.png" ;
    static const String imgs5 = "assets/images/img_5.png" ;
   static const String logo = "assets/icon/logo.png" ;
+  static const String telegram = "assets/images/telegram.png";
+  static const String savatcha = "assets/images/savatcha.png";
 }

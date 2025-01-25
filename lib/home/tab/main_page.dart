@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/components/medeaqurest/medea_qurest.dart';
+import 'package:online_shop/home/counterpage.dart/malumotnoma.dart';
 import 'package:online_shop/home/tab/accaunt_page.dart';
 import 'package:online_shop/home/tab/favs_page.dart';
 import 'package:online_shop/home/tab/home_page.dart';
 import 'package:online_shop/home/tab/shopping_page.dart';
-import 'package:online_shop/home/tab/sorch_page.dart';
+import 'package:online_shop/home/tab/search_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

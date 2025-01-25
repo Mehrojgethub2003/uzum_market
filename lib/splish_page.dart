@@ -10,7 +10,7 @@ class SplishPage extends StatelessWidget {
      Future.delayed(Duration(seconds: 3)).then((value) =>
     Navigator.pushAndRemoveUntil(context, 
     MaterialPageRoute(builder:(_)=>MainPage()), (Route) => false));
-    return Scaffold(appBar: AppBar(title: Text('data'),),
+    return Scaffold(appBar: AppBar(title: Text('Uzum Market'),),
       body: Center(
         child:Image.asset(AppImage.logo,width: 120,),
     ),
