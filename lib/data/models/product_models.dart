@@ -1,5 +1,3 @@
-
-
 class Products {
   final String? status;
   final String? message;
@@ -43,15 +41,15 @@ class Product {
   final bool? popular;
 
   Product({
-    required this.id,
-    required this.title,
-    required this.image,
-    required this.price,
-    required this.description,
-    required this.brand,
-    required this.model,
-    required this.color,
-    required this.category,
+    this.id,
+    this.title,
+    this.image,
+    this.price,
+    this.description,
+    this.brand,
+    this.model,
+    this.color,
+    this.category,
     this.discount,
     this.popular,
   });
@@ -61,7 +59,7 @@ class Product {
       id: json['id'],
       title: json['title'],
       image: json['image'],
-      price: json['price'].toDouble(),
+      price: (json['price']??0).toDouble(),
       description: json['description'],
       brand: json['brand'],
       model: json['model'],
@@ -71,6 +69,8 @@ class Product {
       popular: json['popular'],
     );
   }
+
+
 
   Map<String, dynamic> toJson() {
     return {
@@ -89,94 +89,9 @@ class Product {
   }
 }
 
-// class ProductResponsePhone {
-//   final String? status;
-//   final String? message;
-//   final List<Product>? products;
 
-//   ProductResponsePhone({
-//     this.status,
-//     this.message,
-//     this.products,
-//   });
 
-//   factory ProductResponsePhone.fromJson(Map<String, dynamic> json) {
-//     return ProductResponsePhone(
-//       status: json['status'] as String?,
-//       message: json['message'] as String?,
-//       products: (json['products'] as List?)
-//           ?.map((product) => Product.fromJson(product as Map<String, dynamic>))
-//           .toList(),
-//     );
-//   }
 
-//   Map<String, dynamic> toJson() {
-//     return {
-//       'status': status,
-//       'message': message,
-//       'products': products?.map((product) => product.toJson()).toList(),
-//     };
-//   }
-// }
-// class ProductPhone {
-//   final int? id;
-//   final String? title;
-//   final String? image;
-//   final double? price;
-//   final String? description;
-//   final String? brand;
-//   final String? model;
-//   final String? color;
-//   final String? category;
-//   final int? discount;
-//   final bool? onSale;
-
-//   ProductPhone({
-//     this.id,
-//     this.title,
-//     this.image,
-//     this.price,
-//     this.description,
-//     this.brand,
-//     this.model,
-//     this.color,
-//     this.category,
-//     this.discount,
-//     this.onSale,
-//   });
-
-//   factory ProductPhone.fromJson(Map<String, dynamic> json) {
-//     return ProductPhone(
-//       id: json['id'] as int?,
-//       title: json['title'] as String?,
-//       image: json['image'] as String?,
-//       price: (json['price'] as num?)?.toDouble(),
-//       description: json['description'] as String?,
-//       brand: json['brand'] as String?,
-//       model: json['model'] as String?,
-//       color: json['color'] as String?,
-//       category: json['category'] as String?,
-//       discount: json['discount'] as int?,
-//       onSale: json['onSale'] as bool?,
-//     );
-//   }
-
-//   Map<String, dynamic> toJson() {
-//     return {
-//       'id': id,
-//       'title': title,
-//       'image': image,
-//       'price': price,
-//       'description': description,
-//       'brand': brand,
-//       'model': model,
-//       'color': color,
-//       'category': category,
-//       'discount': discount,
-//       'onSale': onSale,
-//     };
-//   }
-// }
 
 class ProductResponse {
   final List<Product>? products;
@@ -197,6 +112,7 @@ class ProductResponse {
     return products?.map((product) => product.toJson()).toList() ?? [];
   }
 }
+
 class Product2 {
   final int? id;
   final String? title;
@@ -235,4 +151,73 @@ class Product2 {
       'image': image,
     };
   }
+}
+
+
+class ShoppingProducts {
+  final String? id;
+  final String? productType;
+  final String? title;
+  final double? price;
+  final String? description;
+  final String? category;
+  final String? imageURL;
+  final double? rating;
+  final String? availability;
+  final String? seller;
+  final String? source;
+  final String? addedByUser; // Faqat "userAdded" mahsulotlar uchun mavjud
+
+  ShoppingProducts({
+  this.id,
+  this.productType,
+  this.title,
+  this.price,
+  this.description,
+  this.category,
+  this.imageURL,
+  this.rating,
+  this.availability,
+  this.seller,
+  this.source,
+  this.addedByUser, // Faqat ba'zi mahsulotlar uchun optional
+  });
+
+  // **📌 JSON-dan Dart obyektiga o‘girish**
+  factory ShoppingProducts.fromJson(Map<String, dynamic> json) {
+    return ShoppingProducts(
+      id: json["id"],
+      productType: json["productType"],
+      title: json["title"],
+      price: (json["price"] as num).toDouble(),
+      description: json["description"],
+      category: json["category"],
+      imageURL: json["imageURL"],
+      rating: (json["rating"] as num).toDouble(),
+      availability: json["availability"],
+      seller: json["seller"],
+      source: json["source"],
+      addedByUser: json["addedByUser"], // Agar mavjud bo'lsa, oladi
+    );
+  }
+
+  
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "productType": productType,
+      "title": title,
+      "price": price,
+      "description": description,
+      "category": category,
+      "imageURL": imageURL,
+      "rating": rating,
+      "availability": availability,
+      "seller": seller,
+      "source": source,
+      if (addedByUser != null) "addedByUser": addedByUser, // Faqat mavjud bo'lsa
+    };
+  }
+
+ 
 }

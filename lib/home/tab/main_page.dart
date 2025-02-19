@@ -20,7 +20,7 @@ class _MyWidgetState extends State<MainPage> {
   Widget build(BuildContext context) {
     List pages = [
       const HomePage(),
-      const SorchPage(),
+     const SorchPage(),
       const ShoppingPage(),
       const FavsPage(),
       const AccauntPage(),

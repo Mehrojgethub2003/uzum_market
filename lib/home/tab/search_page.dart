@@ -4,7 +4,6 @@ import 'package:online_shop/components/medeaqurest/medea_qurest.dart';
 
 class SorchPage extends StatefulWidget {
   const SorchPage({super.key});
-
   @override
   State<SorchPage> createState() => _MyWidgetState();
 }
@@ -23,7 +22,7 @@ class _MyWidgetState extends State<SorchPage> {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.grey.shade200),
-          child: Row(
+          child: const Row(
             children: [
               SizedBox(
                 width: 7,
@@ -134,7 +133,7 @@ Widget _product(String productName, int ImageInex) {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Container(

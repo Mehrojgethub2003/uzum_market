@@ -1,14 +1,11 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:online_shop/components/app_image.dart';
 import 'package:online_shop/components/medeaqurest/medea_qurest.dart';
 import 'package:online_shop/home/counterpage.dart/cetiypage.dart';
 import 'package:online_shop/home/counterpage.dart/habarnoma.dart';
 import 'package:online_shop/home/counterpage.dart/malumotnoma.dart';
 import 'package:online_shop/home/counterpage.dart/tranthaction.dart';
+import 'package:online_shop/home_products/category_products_top.dart/registratsiya.dart/registrishin.dart';
 
 class AccauntPage extends StatefulWidget {
   const AccauntPage({super.key});
@@ -42,14 +39,14 @@ class _MyWidgetState extends State<AccauntPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Container(
               height: m_h(context) * 0.22,
               width: double.infinity,
               color: Colors.grey.shade200,
-              child: Column(
+              child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Center(
@@ -75,11 +72,11 @@ class _MyWidgetState extends State<AccauntPage> {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        Tranthaction(), // Navigate to the CounterPage
+                        const Tranthaction(), // Navigate to the CounterPage
                   ),
                 );
               },
-              child: SizedBox(
+              child: const SizedBox(
                 height: 50,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -121,19 +118,19 @@ class _MyWidgetState extends State<AccauntPage> {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        Cetiypage(), // Navigate to the CounterPage
+                        const Cetiypage(), // Navigate to the CounterPage
                   ),
                 );
               },
-              child: SizedBox(
+              child: const SizedBox(
                 height: 50,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  padding: EdgeInsets.symmetric(horizontal: 30),
                   child: Row(
                     children: [
                       Icon(Icons.room_outlined),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        padding: EdgeInsets.symmetric(horizontal: 15),
                         child: Text(
                           "Shahar",
                           style: TextStyle(fontSize: 19),
@@ -153,11 +150,11 @@ class _MyWidgetState extends State<AccauntPage> {
                 ),
               ),
             ),
-            Divider(
+            const Divider(
               height: 1,
               color: Colors.grey,
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -189,7 +186,7 @@ class _MyWidgetState extends State<AccauntPage> {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        Message(), // Navigate to the Message page
+                        const Message(), // Navigate to the Message page
                   ),
                 );
               },
@@ -199,9 +196,9 @@ class _MyWidgetState extends State<AccauntPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: Row(
                     children: [
-                      Icon(Icons.circle_notifications_outlined),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                      const Icon(Icons.circle_notifications_outlined),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 15),
                         child: Text(
                           "Xabarnomalar",
                           style: TextStyle(fontSize: 19),
@@ -209,7 +206,7 @@ class _MyWidgetState extends State<AccauntPage> {
                       ),
                       Expanded(
                           child: Container()), // This is equivalent to Spacer()
-                      Icon(Icons.arrow_forward_ios_rounded),
+                      const Icon(Icons.arrow_forward_ios_rounded),
                     ],
                   ),
                 ),
@@ -230,7 +227,7 @@ class _MyWidgetState extends State<AccauntPage> {
                       width: double.infinity,
                       child: Column(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 6,
                           ),
                           Container(
@@ -241,18 +238,18 @@ class _MyWidgetState extends State<AccauntPage> {
                               color: Colors.grey.shade500,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 17,
                           ),
                           Center(
                             child: Container(
-                              child: Text(
+                              child: const Text(
                                 "Biz bilan boglaning",
                                 style: TextStyle(fontSize: 22),
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 17,
                           ),
                           Center(
@@ -266,11 +263,11 @@ class _MyWidgetState extends State<AccauntPage> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 1,
                           ),
                           Container(
-                              child: Text("Telegram",
+                              child: const Text("Telegram",
                                   style: TextStyle(fontSize: 15)))
                         ],
                       ),
@@ -280,13 +277,13 @@ class _MyWidgetState extends State<AccauntPage> {
               },
               child: Container(
                 height: 50,
-                child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30),
                     child: Row(
                       children: [
                         Icon(Icons.local_post_office_outlined),
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          padding: EdgeInsets.symmetric(horizontal: 15),
                           child: Text(
                             "Biz bilan bog'lanish",
                             style: TextStyle(fontSize: 19),
@@ -298,7 +295,7 @@ class _MyWidgetState extends State<AccauntPage> {
                     )),
               ),
             ),
-            Divider(
+            const Divider(
               height: 1,
               color: Colors.grey,
             ),
@@ -308,19 +305,19 @@ class _MyWidgetState extends State<AccauntPage> {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        Information(), // Navigate to the Information page
+                        const Information(), // Navigate to the Information page
                   ),
                 );
               },
-              child: SizedBox(
+              child: const SizedBox(
                 height: 50, // Height set to 50 as per your requirement
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  padding: EdgeInsets.symmetric(horizontal: 30),
                   child: Row(
                     children: [
                       Icon(Icons.help_outline_sharp), // Help icon
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        padding: EdgeInsets.symmetric(horizontal: 15),
                         child: Text(
                           "Ma'lumotnoma", // Text label
                           style: TextStyle(fontSize: 19),
@@ -340,158 +337,39 @@ class _MyWidgetState extends State<AccauntPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "Versiya:1.7.13",
                     style: TextStyle(color: Colors.grey),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 75,
                   ),
-                  Center(
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20
+                    ),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                        backgroundColor: Colors.transparent,
-                        disabledForegroundColor:
-                            Colors.transparent.withOpacity(0.38),
-                        disabledBackgroundColor: Colors.transparent.withOpacity(
-                            0.12), // Button ustidagi rangni shaffof qilish
+                        fixedSize: const Size(double.maxFinite, 48),
+                        backgroundColor: Colors.blue.shade800,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                              5), // Buttonning yumaloq qirralari
+                          borderRadius: BorderRadius.circular(5),
                         ),
                       ),
                       onPressed: () {
                         showModalBottomSheet(
                           context: context,
                           isScrollControlled: true,
-                          builder: (BuildContext context) {
-                            return SizedBox(
-                              height: 870,
-                              width: double.infinity,
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                      height:
-                                          15), // Boshidan ozgina bo'sh joy qoldirish
-
-                                  // "Kirish" matnini markazlashtirish
-                                  Center(
-                                    child: Text(
-                                      "Kirish",
-                                      style: TextStyle(fontSize: 20),
-                                    ),
-                                  ),
-
-                                  SizedBox(height: 30),
-
-                                  // "Telifon raqamingizni kiriting" matnini yuqoridan joylashtirish
-                                  Align(
-                                    alignment: Alignment
-                                        .topLeft, // Matnni chapga joylashtirish
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 15), // Matnni chapga siljitish
-                                      child: Text(
-                                        "Telifon raqamingizni kiriting",
-                                        style: TextStyle(
-                                            fontSize: 25, color: Colors.black),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(height: 15),
-                                  Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(left: 15),
-                                      child: Text(
-                                        "Tastiqlash kodi ko'rsating SMS yuboramiz",
-                                        style: TextStyle(fontSize: 16),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(height: 15),
-
-                                  Container(
-                                    //height: 40,
-                                    width: m_w(context) * 0.9,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(7),
-                                      color: Colors.grey.shade300,
-                                    ),
-                                    child: TextField(
-                                      inputFormatters: [
-                                        MaskTextInputFormatter(
-                                          mask: "(##) ### ## ##",
-                                        ),
-                                      ],
-                                      style: TextStyle(fontSize: 17),
-                                      controller:
-                                          _controller, // Default qiymatni ko'rsatish uchun controllerdan foydalanish
-                                      keyboardType: TextInputType
-                                          .number, // Raqamlarni kiritish uchun keyboard turi
-                                      decoration: InputDecoration(
-                                          prefixIcon: SizedBox(
-                                              width: 20,
-                                              child: Center(
-                                                  child: Text(
-                                                "+998",
-                                                style: TextStyle(fontSize: 17),
-                                              ))), // Raqamni +998 bilan boshlash
-                                          border: InputBorder.none,
-                                          contentPadding:
-                                              EdgeInsets.only(top: 12)
-                                          // Matnni maydonda joylashtirish
-                                          ),
-                                    ),
-                                  ),
-
-                                  SizedBox(height: 20),
-
-                                  Container(
-                                    height: 45,
-                                    width: m_w(context) * 0.9,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(7),
-                                      color: Colors.blue.shade700,
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        "Kodni olish",
-                                        style: TextStyle(
-                                            fontSize: 20, color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-
-                                  SizedBox(height: 20),
-                                ],
-                              ),
-                            );
-                          },
+                          builder: (BuildContext context) =>
+                              const Registrishin(),
                         );
                       },
-                      child: Container(
-                        height: 50,
-                        width: 350,
-                        decoration: BoxDecoration(
-                          color: Colors.blue.shade800,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Kirish",
-                              style:
-                                  TextStyle(fontSize: 20, color: Colors.white),
-                            ),
-                          ],
-                        ),
+                      child: const Text(
+                        "Kirish",
+                        style: TextStyle(fontSize: 20, color: Colors.white),
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   )
                 ],
